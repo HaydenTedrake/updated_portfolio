@@ -17,7 +17,7 @@
       "title": "LinkedIn",
       "link": "https://www.linkedin.com/in/hayden-tedrake-5330ba236/"
     },
-    { "id": "5", "title": "Email", "link": "hayden17@mit.edu" }
+    { "id": "5", "title": "Email", "link": "mailto:hayden17@mit.edu" }
   ],
   "projects": [
     {
