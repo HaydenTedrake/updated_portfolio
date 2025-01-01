@@ -1,96 +1,130 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Cursor from "../components/Cursor";
 import Header from "../components/Header";
-import Head from "next/head";
+import ProjectResume from "../components/ProjectResume";
+import Socials from "../components/Socials";
+import Button from "../components/Button";
+import { useTheme } from "next-themes";
+// Data
 import data from "../data/portfolio.json";
 
 const Resume = () => {
+  const router = useRouter();
+  const theme = useTheme();
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+    if (!data.showResume) {
+      router.push("/");
+    }
+  }, [router]);
+
   return (
     <>
-      <Head>
-        <title>{data.name} | Resume</title>
-      </Head>
-      <div className={`relative ${data.showCursor && "cursor-none"}`}>
-        <div className="gradient-circle"></div>
-        <div className="gradient-circle-bottom"></div>
-
-        <div className="container mx-auto mb-10">
-          <Header />
-          <div className="mt-10">
-            <h1 className="mx-auto text-4xl font-bold">{data.name}</h1>
-            <h2 className="text-xl mt-5">{data.resume.tagline}</h2>
-          </div>
-
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold">Experience</h2>
-            <div className="mt-5">
-              {data.resume.experiences.map((experience) => (
-                <div key={experience.id} className="mt-5">
-                  <h3 className="text-lg font-bold">{experience.position}</h3>
-                  <p className="text-sm text-gray-500">{experience.dates}</p>
-                  <p className="text-sm text-gray-500">{experience.type}</p>
-                  <ul className="list-disc ml-5 mt-2">
-                    {experience.bullets.split(", ").map((bullet, i) => (
-                      <li key={i}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold">Education</h2>
-            <div className="mt-5">
-              <h3 className="text-lg font-bold">{data.resume.education.universityName}</h3>
-              <p className="text-sm text-gray-500">{data.resume.education.universityDate}</p>
-              <p className="mt-2">{data.resume.education.universityPara}</p>
-            </div>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h2 className="text-2xl font-bold">Languages</h2>
-              <div className="mt-5">
-                {data.resume.languages.map((language, index) => (
-                  <span
-                    key={index}
-                    className="mr-3 text-sm bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-md"
-                  >
-                    {language}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold">Frameworks</h2>
-              <div className="mt-5">
-                {data.resume.frameworks.map((framework, index) => (
-                  <span
-                    key={index}
-                    className="mr-3 text-sm bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-md"
-                  >
-                    {framework}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold">Other Skills</h2>
-            <div className="mt-5">
-              {data.resume.others.map((other, index) => (
-                <span
-                  key={index}
-                  className="mr-3 text-sm bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded-md"
-                >
-                  {other}
-                </span>
-              ))}
-            </div>
-          </div>
+      {process.env.NODE_ENV === "development" && (
+        <div className="fixed bottom-6 right-6">
+          <Button onClick={() => router.push("/edit")} type="primary">
+            Edit Resume
+          </Button>
         </div>
+      )}
+      {data.showCursor && <Cursor />}
+      <div
+        className={`container mx-auto mb-10 ${
+          data.showCursor && "cursor-none"
+        }`}
+      >
+        <Header />
+        {mount && (
+          <div className="mt-10 w-full flex flex-col items-center">
+            <div
+              className={`w-full ${
+                mount && theme.theme === "dark" ? "bg-slate-800" : "bg-gray-50"
+              } max-w-4xl p-20 mob:p-5 desktop:p-20 rounded-lg shadow-sm`}
+            >
+              <h1 className="text-3xl font-bold">{data.name}</h1>
+              <h2 className="text-xl mt-5">{data.resume.tagline}</h2>
+              <h2 className="w-4/5 text-xl mt-5 opacity-50">
+                {data.resume.description}
+              </h2>
+              <div className="mt-2">
+                <Socials />
+              </div>
+              <div className="mt-5">
+                <h1 className="text-2xl font-bold">Experience</h1>
+
+                {data.resume.experiences.map(
+                  ({ id, dates, type, position, bullets }) => (
+                    <ProjectResume
+                      key={id}
+                      dates={dates}
+                      type={type}
+                      position={position}
+                      bullets={bullets}
+                    />
+                  )
+                )}
+              </div>
+              <div className="mt-5">
+                <h1 className="text-2xl font-bold">Education</h1>
+                <div className="mt-2">
+                  <h2 className="text-lg">{data.resume.education.universityName}</h2>
+                  <h3 className="text-sm opacity-75">
+                    {data.resume.education.universityDate}
+                  </h3>
+                  <p className="text-sm mt-2 opacity-50">
+                    {data.resume.education.universityPara}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-5">
+                <h1 className="text-2xl font-bold">Skills</h1>
+                <div className="flex mob:flex-col desktop:flex-row justify-between">
+                  {data.resume.languages && (
+                    <div className="mt-2 mob:mt-5">
+                      <h2 className="text-lg">Languages</h2>
+                      <ul className="list-disc">
+                        {data.resume.languages.map((language, index) => (
+                          <li key={index} className="ml-5 py-2">
+                            {language}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {data.resume.frameworks && (
+                    <div className="mt-2 mob:mt-5">
+                      <h2 className="text-lg">Frameworks</h2>
+                      <ul className="list-disc">
+                        {data.resume.frameworks.map((framework, index) => (
+                          <li key={index} className="ml-5 py-2">
+                            {framework}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {data.resume.others && (
+                    <div className="mt-2 mob:mt-5">
+                      <h2 className="text-lg">Others</h2>
+                      <ul className="list-disc">
+                        {data.resume.others.map((other, index) => (
+                          <li key={index} className="ml-5 py-2">
+                            {other}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
