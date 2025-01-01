@@ -1,90 +1,90 @@
 {
-  "name":"Hayden",
-  "headerTaglineOne":"Hello 👋",
-  "headerTaglineTwo":"I'm Hayden Tedrake - ",
-  "headerTaglineThree":"Aspiring astrophysicist",
-  "headerTaglineFour":"MIT student",
-  "showCursor":true,
-  "showBlog":true,
-  "darkMode":true,
-  "showResume":true,
-  "socials":[
+  "name": "Hayden",
+  "headerTaglineOne": "Hello 👋",
+  "headerTaglineTwo": "I'm Hayden Tedrake - ",
+  "headerTaglineThree": "Aspiring astrophysicist",
+  "headerTaglineFour": "MIT student",
+  "showCursor": true,
+  "darkMode": true,
+  "showResume": true,
+  "socials": [
     {
-      "id":"1",
-      "title":"Github",
-      "link":"https://github.com/haydentedrake"
+      "id": "1",
+      "title": "Github",
+      "link": "https://github.com/haydentedrake"
     },
     {
-      "id":"2",
-      "title":"LinkedIn",
-      "link":"https://www.linkedin.com/in/hayden-tedrake-5330ba236/"
+      "id": "2",
+      "title": "LinkedIn",
+      "link": "https://www.linkedin.com/in/hayden-tedrake-5330ba236/"
     },
     {
-      "id":"5",
-      "title":"Email",
-      "link":"mailto:hello@chetanverma.com"
+      "id": "5",
+      "title": "Email",
+      "link": "mailto:hello@chetanverma.com"
     }
   ],
-  "projects":[
+  "projects": [
     {
-      "id":"1",
-      "title":"MIT Primordial Black Holes Group",
-      "description":"https://tinyurl.com/haydenUROPproposal",
-      "imageSrc":"/images/th.jpg",
-      "url":"https://tinyurl.com/haydenUROPproposal"
+      "id": "1",
+      "title": "MIT Primordial Black Holes Group",
+      "description": "https://tinyurl.com/haydenUROPproposal",
+      "imageSrc": "/images/project1.jpg",
+      "url": "https://tinyurl.com/haydenUROPproposal"
     },
     {
-      "id":"2",
-      "title":"MIT Marine Robotics Group",
-      "description":"https://tinyurl.com/hayden2024research",
-      "imageSrc":"/images/mrg.jpeg",
-      "url":"https://tinyurl.com/hayden2024research"
+      "id": "2",
+      "title": "MIT Marine Robotics Group",
+      "description": "https://tinyurl.com/hayden2024research",
+      "imageSrc": "/images/project2.jpg",
+      "url": "https://tinyurl.com/hayden2024research"
     },
     {
-      "id":"3",
-      "title":"Southwest Research Institute",
-      "description":"https://tinyurl.com/hayden2023ResearchProposal",
-      "imageSrc":"/images/th-1.jpg",
-      "url":"https://tinyurl.com/hayden2023ResearchProposal"
+      "id": "3",
+      "title": "Southwest Research Institute",
+      "description": "https://tinyurl.com/hayden2023ResearchProposal",
+      "imageSrc": "/images/project3.jpg",
+      "url": "https://tinyurl.com/hayden2023ResearchProposal"
     }
   ],
-  "aboutpara":"I am pursuing a degree in physics with a minor in astronomy at MIT. Some of my interests include studying the mysteries of dark matter, black holes, and exploring the possibilities of habitable exoplanets.",
-  "resume":{
-    "tagline":"Astrophysics student at MIT.",
-    "experiences":[
+  "aboutpara": "I am pursuing a degree in physics with a minor in astronomy at MIT. Some of my interests include studying the mysteries of dark matter, black holes, and exploring the possibilities of habitable exoplanets.",
+  "resume": {
+    "tagline": "Astrophysics student at MIT.",
+    "description": "",
+    "experiences": [
       {
-        "id":"1",
-        "dates":"November 2022 - June 2024",
-        "type":"Part Time",
-        "position":"Instructor at Mathnasium",
-        "bullets":"Math tutor to small groups of K-9th grade students, Collaborate to adjust student learning plans"
+        "id": "1",
+        "dates": "November 2022 - June 2024",
+        "type": "Part Time",
+        "position": "Instructor at Mathnasium",
+        "bullets": ["Math tutor to small groups of K-9th grade students", "Collaborate to adjust student learning plans"]
       },
       {
-        "id":"2",
-        "dates":"Summer 2024",
-        "type":"Part Time",
-        "position":"Food Runner/Hostess at the Biltmore Bar & Grille",
-        "bullets":"Seated customers, delivered food, bussed tables, etc."
+        "id": "2",
+        "dates": "Summer 2024",
+        "type": "Part Time",
+        "position": "Food Runner/Hostess at the Biltmore Bar & Grille",
+        "bullets": ["Seated customers", "delivered food", "bussed tables"]
       }
     ],
-    "education":{
-      "universityName":"Massachusetts Institute of Technology",
-      "universityDate":"2024-2028",
-      "universityPara":"Major: Physics (course 8); Minor: Astronomy (course 12)"
+    "education": {
+      "universityName": "Massachusetts Institute of Technology",
+      "universityDate": "2024-2028",
+      "universityPara": "Major: Physics (course 8); Minor: Astronomy (course 12)"
     },
-    "languages":[
+    "languages": [
       "Javascript",
       "HTML5",
       "CSS",
       "Python",
       "Go"
     ],
-    "frameworks":[
+    "frameworks": [
       "React",
       "Typescript",
       "NodeJs"
     ],
-    "others":[
+    "others": [
       "Figma",
       "AdobeXD",
       "AWS"
