@@ -3,14 +3,15 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
+// Local Data
 import data from "../../data/portfolio.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll }) => {
+const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const { name, showResume } = data;
+  const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
@@ -66,24 +67,53 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
                 theme === "dark" ? "bg-slate-800" : "bg-white"
               } shadow-md rounded-md`}
             >
-              <div className="grid grid-cols-1">
-                <Button onClick={handleWorkScroll}>Work</Button>
-                <Button onClick={handleAboutScroll}>About</Button>
-                {showResume && (
+              {!isBlog ? (
+                <div className="grid grid-cols-1">
+                  <Button onClick={handleWorkScroll}>Work</Button>
+                  <Button onClick={handleAboutScroll}>About</Button>
+                  {showBlog && (
+                    <Button onClick={() => router.push("/blog")}>Blog</Button>
+                  )}
+                  {showResume && (
+                    <Button
+                      onClick={() =>
+                        window.open("mailto:hello@chetanverma.com")
+                      }
+                    >
+                      Resume
+                    </Button>
+                  )}
+
                   <Button
-                    onClick={() =>
-                      window.open("mailto:hello@chetanverma.com")
-                    }
+                    onClick={() => window.open("mailto:hello@chetanverma.com")}
                   >
-                    Resume
+                    Contact
                   </Button>
-                )}
-                <Button
-                  onClick={() => window.open("mailto:hello@chetanverma.com")}
-                >
-                  Contact
-                </Button>
-              </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1">
+                  <Button onClick={() => router.push("/")} classes="first:ml-1">
+                    Home
+                  </Button>
+                  {showBlog && (
+                    <Button onClick={() => router.push("/blog")}>Blog</Button>
+                  )}
+                  {showResume && (
+                    <Button
+                      onClick={() => router.push("/resume")}
+                      classes="first:ml-1"
+                    >
+                      Resume
+                    </Button>
+                  )}
+
+                  <Button
+                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                  >
+                    Contact
+                  </Button>
+                </div>
+              )}
             </Popover.Panel>
           </>
         )}
@@ -99,31 +129,67 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
         >
           {name}.
         </h1>
-        <div className="flex">
-          <Button onClick={handleWorkScroll}>Work</Button>
-          <Button onClick={handleAboutScroll}>About</Button>
-          {showResume && (
-            <Button
-              onClick={() => router.push("/resume")}
-              classes="first:ml-1"
-            >
-              Resume
+        {!isBlog ? (
+          <div className="flex">
+            <Button onClick={handleWorkScroll}>Work</Button>
+            <Button onClick={handleAboutScroll}>About</Button>
+            {showBlog && (
+              <Button onClick={() => router.push("/blog")}>Blog</Button>
+            )}
+            {showResume && (
+              <Button
+                onClick={() => router.push("/resume")}
+                classes="first:ml-1"
+              >
+                Resume
+              </Button>
+            )}
+
+            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+              Contact
             </Button>
-          )}
-          <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-            Contact
-          </Button>
-          {mounted && theme && data.darkMode && (
-            <Button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <img
-                className="h-6"
-                src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-              ></img>
+            {mounted && theme && data.darkMode && (
+              <Button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                <img
+                  className="h-6"
+                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                ></img>
+              </Button>
+            )}
+          </div>
+        ) : (
+          <div className="flex">
+            <Button onClick={() => router.push("/")}>Home</Button>
+            {showBlog && (
+              <Button onClick={() => router.push("/blog")}>Blog</Button>
+            )}
+            {showResume && (
+              <Button
+                onClick={() => router.push("/resume")}
+                classes="first:ml-1"
+              >
+                Resume
+              </Button>
+            )}
+
+            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+              Contact
             </Button>
-          )}
-        </div>
+
+            {mounted && theme && data.darkMode && (
+              <Button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                <img
+                  className="h-6"
+                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                ></img>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
