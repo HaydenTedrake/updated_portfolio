@@ -147,19 +147,6 @@ const Edit = () => {
   };
 
   return (
-    <div className={`container mx-auto ${data.showCursor && "cursor-none"}`}>
-      <Header isBlog></Header>
-      {data.showCursor && <Cursor />}
-      <div className="mt-10">
-        <div className={`${theme === "dark" ? "bg-transparent" : "bg-white"}`}>
-          <div className="flex items-center justify-between">
-            <h1 className="text-4xl">Dashboard</h1>
-            <div className="flex items-center">
-              <Button onClick={saveData} type="primary">
-                Save
-              </Button>
-            </div>
-          </div>
 
           <div className="flex items-center">
             <Button
