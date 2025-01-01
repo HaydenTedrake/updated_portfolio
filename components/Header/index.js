@@ -3,10 +3,9 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
-// Local Data
 import data from "../../data/portfolio.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll}) => {
+const Header = ({ handleWorkScroll, handleAboutScroll }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -67,34 +66,24 @@ const Header = ({ handleWorkScroll, handleAboutScroll}) => {
                 theme === "dark" ? "bg-slate-800" : "bg-white"
               } shadow-md rounded-md`}
             >
-
+              <div className="grid grid-cols-1">
+                <Button onClick={handleWorkScroll}>Work</Button>
+                <Button onClick={handleAboutScroll}>About</Button>
+                {showResume && (
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() =>
+                      window.open("mailto:hello@chetanverma.com")
+                    }
                   >
-                    Contact
+                    Resume
                   </Button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1">
-                  <Button onClick={() => router.push("/")} classes="first:ml-1">
-                    Home
-                  </Button>
-                  {showResume && (
-                    <Button
-                      onClick={() => router.push("/resume")}
-                      classes="first:ml-1"
-                    >
-                      Resume
-                    </Button>
-                  )}
-
-                  <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
-                  >
-                    Contact
-                  </Button>
-                </div>
-              )}
+                )}
+                <Button
+                  onClick={() => window.open("mailto:hello@chetanverma.com")}
+                >
+                  Contact
+                </Button>
+              </div>
             </Popover.Panel>
           </>
         )}
@@ -110,57 +99,31 @@ const Header = ({ handleWorkScroll, handleAboutScroll}) => {
         >
           {name}.
         </h1>
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
-
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
+        <div className="flex">
+          <Button onClick={handleWorkScroll}>Work</Button>
+          <Button onClick={handleAboutScroll}>About</Button>
+          {showResume && (
+            <Button
+              onClick={() => router.push("/resume")}
+              classes="first:ml-1"
+            >
+              Resume
             </Button>
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
-          </div>
-        ) : (
-          <div className="flex">
-            <Button onClick={() => router.push("/")}>Home</Button>
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
-
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
+          )}
+          <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            Contact
+          </Button>
+          {mounted && theme && data.darkMode && (
+            <Button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              <img
+                className="h-6"
+                src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+              ></img>
             </Button>
-
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
