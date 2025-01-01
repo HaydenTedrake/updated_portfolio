@@ -11,6 +11,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
   const [mounted, setMounted] = useState(false);
 
   const { name, showResume } = data;
+  const isResume = router.pathname === "/resume";
 
   useEffect(() => {
     setMounted(true);
@@ -67,13 +68,20 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
               } shadow-md rounded-md`}
             >
               <div className="grid grid-cols-1">
-                <Button onClick={handleWorkScroll}>Work</Button>
-                <Button onClick={handleAboutScroll}>About</Button>
-                {showResume && (
+                {isResume ? (
+                  <Button onClick={() => router.push("/")} classes="first:ml-1">
+                    Home
+                  </Button>
+                ) : (
+                  <>
+                    <Button onClick={handleWorkScroll}>Work</Button>
+                    <Button onClick={handleAboutScroll}>About</Button>
+                  </>
+                )}
+                {showResume && !isResume && (
                   <Button
-                    onClick={() =>
-                      window.open("mailto:hello@chetanverma.com")
-                    }
+                    onClick={() => router.push("/resume")}
+                    classes="first:ml-1"
                   >
                     Resume
                   </Button>
@@ -100,9 +108,17 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
           {name}.
         </h1>
         <div className="flex">
-          <Button onClick={handleWorkScroll}>Work</Button>
-          <Button onClick={handleAboutScroll}>About</Button>
-          {showResume && (
+          {isResume ? (
+            <Button onClick={() => router.push("/")} classes="first:ml-1">
+              Home
+            </Button>
+          ) : (
+            <>
+              <Button onClick={handleWorkScroll}>Work</Button>
+              <Button onClick={handleAboutScroll}>About</Button>
+            </>
+          )}
+          {showResume && !isResume && (
             <Button
               onClick={() => router.push("/resume")}
               classes="first:ml-1"
