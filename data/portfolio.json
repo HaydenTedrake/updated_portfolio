@@ -79,22 +79,25 @@
       "universityDate": "2024-2028",
       "universityPara": "Major: Physics (course 8); Minor: Astronomy (course 12)"
     },
-    "languages": [
+    "technical skills": [
       "Javascript",
-      "HTML5",
-      "CSS",
       "Python",
-      "Go"
-    ],
-    "frameworks": [
+      "PyTorch",
+      "NumPy",
       "React",
-      "Typescript",
-      "NodeJs"
+      "Robot Operation System (ROS)"
+    ],
+    "tools & maker skills": [
+      "GitHub",
+      "Google Sites",
+      "3D Printing",
+      "CAD",
+      "Soldering",
+      "MIT Maker-Space Experience"
     ],
     "others": [
-      "Figma",
-      "AdobeXD",
-      "AWS"
+      "Adaptability & Teamwork",
+      "Genuine passion for astrophysics"
     ]
   }
 }
