@@ -82,11 +82,11 @@ const Resume = () => {
               <div className="mt-5">
                 <h1 className="text-2xl font-bold">Skills</h1>
                 <div className="flex mob:flex-col desktop:flex-row justify-between">
-                  {data.resume.languages && (
+                  {data.resume.technical && (
                     <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Languages</h2>
+                      <h2 className="text-lg">Technical</h2>
                       <ul className="list-disc">
-                        {data.resume.languages.map((language, index) => (
+                        {data.resume.technical.map((language, index) => (
                           <li key={index} className="ml-5 py-2">
                             {language}
                           </li>
@@ -95,11 +95,11 @@ const Resume = () => {
                     </div>
                   )}
 
-                  {data.resume.frameworks && (
+                  {data.resume.tools && (
                     <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Frameworks</h2>
+                      <h2 className="text-lg">Tools</h2>
                       <ul className="list-disc">
-                        {data.resume.frameworks.map((framework, index) => (
+                        {data.resume.tools.map((framework, index) => (
                           <li key={index} className="ml-5 py-2">
                             {framework}
                           </li>
