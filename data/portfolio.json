@@ -81,11 +81,13 @@
     },
     "technical": [
       "Javascript",
+      "HTML",
       "Python",
       "PyTorch",
       "NumPy",
       "React",
-      "Robot Operation System (ROS)"
+      "Robot Operation System (ROS)",
+      "Jupyter Notebook"
     ],
     "tools": [
       "GitHub",
