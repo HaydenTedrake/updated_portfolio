@@ -79,7 +79,7 @@
       "universityDate": "2024-2028",
       "universityPara": "Major: Physics (course 8); Minor: Astronomy (course 12)"
     },
-    "technical skills": [
+    "technical": [
       "Javascript",
       "Python",
       "PyTorch",
@@ -87,7 +87,7 @@
       "React",
       "Robot Operation System (ROS)"
     ],
-    "tools & maker skills": [
+    "tools": [
       "GitHub",
       "Google Sites",
       "3D Printing",
